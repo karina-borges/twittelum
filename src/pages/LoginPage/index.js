@@ -1,23 +1,53 @@
 import Cabecalho from '../../components/Cabecalho'
 import Widget from '../../components/Widget'
 import './loginPage.css'
+import { Helmet } from 'react-helmet'
+import { useRef } from 'react'
 
 function LoginPage() {
+    const inputLogin = useRef()
+    const inputSenha = useRef()
+
+    const handleLoginSubmit = (e) => {
+        e.preventDefault()
+        let login = inputLogin.current.value.trim()
+        let senha = inputSenha.current.value.trim()
+
+        if (!login || !senha ) {
+            alert('Preencha os campos corretamente')
+        }
+    }
+
     return (
         <>
+            <Helmet>
+                <title>Twitelum - Login</title>
+            </Helmet>
             <Cabecalho />
             <div className="loginPage">
                 <div className="container">
                     <Widget>
                         <h2 className="loginPage__title">Seja bem vindo!</h2>
-                        <form className="loginPage__form" action="/">
+                        <form onSubmit={handleLoginSubmit} className="loginPage__form" action="/">
                             <div className="loginPage__inputWrap">
                                 <label className="loginPage__label" htmlFor="login">Login</label>
-                                <input className="loginPage__input" type="text" id="login" name="login" />
+                                <input
+                                    ref={inputLogin}
+                                    className="loginPage__input"
+                                    type="text"
+                                    id="login"
+                                    name="login"
+                                />
                             </div>
                             <div className="loginPage__inputWrap">
                                 <label className="loginPage__label" htmlFor="senha">Senha</label>
-                                <input className="loginPage__input" type="password" id="senha" name="senha" />
+                                <input
+                                    ref={inputSenha}
+                                    className="loginPage__input"
+                                    type="password"
+                                    id="senha"
+                                    name="senha"
+                                />
                             </div>
                             <div className="loginPage__inputWrap">
                                 <button className="loginPage__btnLogin" type="submit">

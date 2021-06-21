@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { Helmet } from 'react-helmet'
 import Cabecalho from '../../components/Cabecalho'
 import NavMenu from '../../components/NavMenu'
 import Dashboard from '../../components/Dashboard'
@@ -16,6 +17,9 @@ function HomePage() {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Twitelum ({`${tweets.length}`})</title>
+      </Helmet>
       <Cabecalho>
         <NavMenu usuario="@omariosouto" />
       </Cabecalho>

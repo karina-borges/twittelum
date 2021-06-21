@@ -27,7 +27,7 @@ export default function FormNovoTweet({addTweetCallback}) {
                     onChange={(e) => setNovoTweet(e.target.value)}
                 ></textarea>
             </div>
-            <button type="submit" disabled={isDisabled} className="novoTweet__envia">Tweetar</button>
+            <button type="submit" disabled={isDisabled} className="novoTweet__envia">Tweet</button>
         </form>
     )
 }
