@@ -17,15 +17,18 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage"
 import NotFoundPage from "./pages/NotFoundPage";
 import * as serviceWorker from "./serviceWorker";
+import Notificacao from './components/Notificacao/index'
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route path="/" component={HomePage} exact/>
-            <Route path="/login" component={LoginPage} exact/>
-            <Route component={NotFoundPage} />
-        </Switch>
-    </BrowserRouter>
+    <Notificacao>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" component={HomePage} exact/>
+                <Route path="/login" component={LoginPage} exact/>
+                <Route component={NotFoundPage} />
+            </Switch>
+        </BrowserRouter>
+    </Notificacao>
     , document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change

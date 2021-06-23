@@ -1,21 +1,31 @@
+import { useContext, useRef } from 'react'
+import {useHistory} from 'react-router-dom'
+import LoginService from '../../services/LoginService'
 import Cabecalho from '../../components/Cabecalho'
 import Widget from '../../components/Widget'
 import './loginPage.css'
 import { Helmet } from 'react-helmet'
-import { useRef } from 'react'
+import NotificacaoContext from '../../contexts/NotificacaoContext'
 
 function LoginPage() {
     const inputLogin = useRef()
     const inputSenha = useRef()
+    const history = useHistory()
+    const setNotificacao = useContext(NotificacaoContext)
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault()
         let login = inputLogin.current.value.trim()
         let senha = inputSenha.current.value.trim()
 
-        if (!login || !senha ) {
-            alert('Preencha os campos corretamente')
-        }
+        try {
+            await LoginService.autenticar(login, senha)
+            setNotificacao('Login realizado com sucesso')
+            history.push('/')
+        } catch(erro) {
+            console.error(erro)
+            setNotificacao(erro.message)
+        } 
     }
 
     return (
