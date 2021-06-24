@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet'
 import Cabecalho from '../../components/Cabecalho'
 import NavMenu from '../../components/NavMenu'
@@ -7,9 +7,15 @@ import Widget from '../../components/Widget'
 import TrendsArea from '../../components/TrendsArea'
 import Tweet from '../../components/Tweet'
 import FormNovoTweet from '../../components/FormNovoTweet'
+import TweetService from '../../services/TweetService'
 
 function HomePage() {
   const [tweets, setTweets] = useState([])
+
+  useEffect(() => {
+    TweetService.getTweets().then(listaTweets => setTweets(listaTweets))
+    
+  }, [])
 
   const addTweet = (tweet) => {
       setTweets([tweet, ...tweets])
@@ -35,11 +41,13 @@ function HomePage() {
         <Dashboard posicao="centro">
           <Widget>
             <div className="tweetsArea">
-              {tweets.map((tweetTexto, indice) => {
+              {tweets.map((tweet, indice) => {
                 return (
                   <Tweet
                       key={indice}
-                      texto={tweetTexto}
+                      id={tweet.id}
+                      texto={tweet.conteudo}
+                      usuario={tweet.usuario}
                   />
                 )
               })}

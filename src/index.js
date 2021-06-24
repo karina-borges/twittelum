@@ -18,12 +18,13 @@ import LoginPage from "./pages/LoginPage"
 import NotFoundPage from "./pages/NotFoundPage";
 import * as serviceWorker from "./serviceWorker";
 import Notificacao from './components/Notificacao/index'
+import PrivateRoute from "./routes/PrivateRoute"
 
 ReactDOM.render(
     <Notificacao>
         <BrowserRouter>
             <Switch>
-                <Route path="/" component={HomePage} exact/>
+                <PrivateRoute path="/" component={HomePage} exact/>
                 <Route path="/login" component={LoginPage} exact/>
                 <Route component={NotFoundPage} />
             </Switch>

@@ -69,3 +69,9 @@
     width: 100%;
     max-width: 100px;
 }
+
+.loginPage__error {
+    color: red;
+    display: inline-block;
+    margin-top: 5px;
+}

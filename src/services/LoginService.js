@@ -1,3 +1,4 @@
+import {TWITTELUM_API} from './utils'
 export default class LoginService{
    /**
    * Autentica o usuário 
@@ -11,7 +12,7 @@ export default class LoginService{
     
       const dadosLogin = {login, senha}
 
-      const resposta = await fetch('https://twitelum-api.herokuapp.com/login', {
+      const resposta = await fetch(TWITTELUM_API + '/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
