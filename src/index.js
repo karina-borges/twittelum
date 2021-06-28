@@ -21,15 +21,17 @@ import Notificacao from './components/Notificacao/index'
 import PrivateRoute from "./routes/PrivateRoute"
 
 ReactDOM.render(
-    <Notificacao>
-        <BrowserRouter>
-            <Switch>
-                <PrivateRoute path="/" component={HomePage} exact/>
-                <Route path="/login" component={LoginPage} exact/>
-                <Route component={NotFoundPage} />
-            </Switch>
-        </BrowserRouter>
-    </Notificacao>
+    <React.StrictMode>
+        <Notificacao>
+            <BrowserRouter>
+                <Switch>
+                    <PrivateRoute path="/" component={HomePage} exact/>
+                    <Route path="/login" component={LoginPage} exact/>
+                    <Route component={NotFoundPage} />
+                </Switch>
+            </BrowserRouter>
+        </Notificacao>
+    </React.StrictMode>
     , document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
