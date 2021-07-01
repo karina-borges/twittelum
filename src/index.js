@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Switch, Route, BrowserRouter } from "react-router-dom"
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 // CSSs Globais
 import "./assets/css/reset.css";
@@ -14,25 +14,31 @@ import "./assets/css/novoTweet.css";
 // import './index.css';
 
 import HomePage from "./pages/HomePage";
-import LoginPage from "./pages/LoginPage"
+import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import * as serviceWorker from "./serviceWorker";
-import Notificacao from './components/Notificacao/index'
-import PrivateRoute from "./routes/PrivateRoute"
+import Notificacao from "./components/Notificacao/index";
+import PrivateRoute from "./routes/PrivateRoute";
+
+import store from "./store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Notificacao>
-            <BrowserRouter>
-                <Switch>
-                    <PrivateRoute path="/" component={HomePage} exact/>
-                    <Route path="/login" component={LoginPage} exact/>
-                    <Route component={NotFoundPage} />
-                </Switch>
-            </BrowserRouter>
-        </Notificacao>
-    </React.StrictMode>
-    , document.getElementById("root"));
+  <React.StrictMode>
+    <Provider store={store}>
+      <Notificacao>
+        <BrowserRouter>
+          <Switch>
+            <PrivateRoute path="/" component={HomePage} exact />
+            <Route path="/login" component={LoginPage} exact />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </BrowserRouter>
+      </Notificacao>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
