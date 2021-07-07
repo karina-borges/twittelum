@@ -3,6 +3,9 @@
     width: 100%;
     background-color: #fff;
   }
+.cabecalho__teste {
+  color: red;
+}
   .cabecalho__container {
     padding: 0 15px;
     display: flex;

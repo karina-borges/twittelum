@@ -1,4 +1,4 @@
-import cabecalhoStyles from './cabecalho.module.css'
+import cabecalhoStyles from './cabecalho.module.css';
 
 function Cabecalho( { children } ) {
     return (

@@ -16,29 +16,28 @@ import "./assets/css/novoTweet.css";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import * as serviceWorker from "./serviceWorker";
-import Notificacao from "./components/Notificacao/index";
+import Notificacao from "./components/Notificacao";
 import PrivateRoute from "./routes/PrivateRoute";
+import * as serviceWorker from "./serviceWorker";
 
-import store from "./store";
-import { Provider } from "react-redux";
+import store from './store';
+import { Provider } from 'react-redux';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Notificacao>
-        <BrowserRouter>
-          <Switch>
-            <PrivateRoute path="/" component={HomePage} exact />
-            <Route path="/login" component={LoginPage} exact />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </BrowserRouter>
-      </Notificacao>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+    <React.StrictMode>
+        <Provider store={store}>
+            <Notificacao>
+                <BrowserRouter>
+                    <Switch>
+                        <PrivateRoute path="/" component={HomePage} exact />
+                        <Route path="/login" component={LoginPage} />
+                        <Route component={NotFoundPage} />
+                    </Switch>
+                </BrowserRouter>
+            </Notificacao>
+        </Provider>
+    </React.StrictMode>
+, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
